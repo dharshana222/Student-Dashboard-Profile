@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    .profile {
+      margin-bottom: 20px;
+    }
+    .profile label {
+      font-weight: bold;
+    }
+    .profile-info {
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 8px 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Student Dashboard</h1>
+  <div class="profile" id="studentProfile">
+    <!-- Profile information will be displayed here dynamically -->
+  </div>
+  <button id="addStudentBtn">Add Student</button>
+</div>
+
+<script>
+  // Sample data for demonstration
+  let students = [
+    {
+      name: 'John Doe',
+      studentID: '123456',
+      email: 'john.doe@example.com',
+      program: 'Computer Science',
+      GPA: '3.7',
+      type: 'Hosteller',
+      native: 'New York',
+      boardOfStudy: 'State Board',
+      fatherName: 'John Doe Sr.',
+      motherName: 'Jane Doe',
+      contactAddress: '123 Main St, New York',
+      allergies: 'Peanuts',
+      motherTongue: 'English'
+    },
+    {
+      name: 'Jane Smith',
+      studentID: '654321',
+      email: 'jane.smith@example.com',
+      program: 'Engineering',
+      GPA: '3.9',
+      type: 'Dayscholar',
+      native: 'Los Angeles',
+      boardOfStudy: 'CBSE',
+      fatherName: 'Bob Smith',
+      motherName: 'Mary Smith',
+      contactAddress: '456 Elm St, Los Angeles',
+      allergies: 'None',
+      motherTongue: 'Spanish'
+    }
+  ];
+
+  // Function to display student profiles
+  function displayStudents() {
+    const studentProfile = document.getElementById('studentProfile');
+    studentProfile.innerHTML = ''; // Clear existing content
+
+    students.forEach(student => {
+      const profileDiv = document.createElement('div');
+      profileDiv.classList.add('profile');
+
+      profileDiv.innerHTML = `
+        <h2>${student.name}</h2>
+        <div class="profile-info">
+          <label>Student ID:</label>
+          <span>${student.studentID}</span>
+        </div>
+        <div class="profile-info">
+          <label>Email:</label>
+          <span>${student.email}</span>
+        </div>
+        <div class="profile-info">
+          <label>Program:</label>
+          <span>${student.program}</span>
+        </div>
+        <div class="profile-info">
+          <label>GPA:</label>
+          <span>${student.GPA}</span>
+        </div>
+        <div class="profile-info">
+          <label>Type:</label>
+          <span>${student.type}</span>
+        </div>
+        <div class="profile-info">
+          <label>Native:</label>
+          <span>${student.native}</span>
+        </div>
+        <div class="profile-info">
+          <label>Board of Study:</label>
+          <span>${student.boardOfStudy}</span>
+        </div>
+        <div class="profile-info">
+          <label>Father's Name:</label>
+          <span>${student.fatherName}</span>
+        </div>
+        <div class="profile-info">
+          <label>Mother's Name:</label>
+          <span>${student.motherName}</span>
+        </div>
+        <div class="profile-info">
+          <label>Contact Address:</label>
+          <span>${student.contactAddress}</span>
+        </div>
+        <div class="profile-info">
+          <label>Allergies:</label>
+          <span>${student.allergies}</span>
+        </div>
+        <div class="profile-info">
+          <label>Mother Tongue:</label>
+          <span>${student.motherTongue}</span>
+        </div>
+        <hr>
+      `;
+
+      studentProfile.appendChild(profileDiv);
+    });
+  }
+
+  // Function to add a new student
+  function addStudent() {
+    const newStudent = {
+      name: prompt('Enter student name'),
+      studentID: prompt('Enter student ID'),
+      email: prompt('Enter student email'),
+      program: prompt('Enter student program'),
+      GPA: prompt('Enter student GPA'),
+      type: prompt('Enter student type (Hosteller/Dayscholar)'),
+      native: prompt('Enter student native'),
+      boardOfStudy: prompt('Enter student board of study'),
+      fatherName: prompt("Enter father's name"),
+      motherName: prompt("Enter mother's name"),
+      contactAddress: prompt('Enter contact address'),
+      allergies: prompt('Enter allergies'),
+      motherTongue: prompt('Enter mother tongue')
+    };
+
+    students.push(newStudent);
+    displayStudents();
+  }
+
+  // Event listener for Add Student button
+  document.getElementById('addStudentBtn').addEventListener('click', addStudent);
+
+  // Display existing students when the page loads
+  displayStudents();
+</script>
+
+</body>
+</html>
